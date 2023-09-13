@@ -22,10 +22,11 @@ public class Deca100M {
 				if (runningTime < 5) {
 					System.out.println("Value too low");
 					runningTime = inputResult.enterResult();
-				} else if (runningTime > 17.83) {
+				} else if (runningTime > 17.8) {
 					System.out.println("Value too high");
 					runningTime = inputResult.enterResult();
 				} else {
+
 					score = calc.calculateTrack(A, B, C, runningTime);
 					active = false;
 				}

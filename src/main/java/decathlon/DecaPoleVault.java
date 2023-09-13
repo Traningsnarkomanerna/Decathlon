@@ -20,7 +20,7 @@ public class DecaPoleVault {
 
 			try {
 				// Acceptable values.
-				if (distance < 102.57) {
+				if (distance < 2) {
 					System.out.println("Value too low");
 					distance = inputResult.enterResult();
 
