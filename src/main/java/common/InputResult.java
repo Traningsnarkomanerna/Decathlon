@@ -3,7 +3,7 @@ package common;
 import java.util.Scanner;
 
 public class InputResult {
-	double inputResult = 0;
+	public double inputResult = 0;
 
 	public double enterResult() {
 		Scanner sc = new Scanner(System.in);
