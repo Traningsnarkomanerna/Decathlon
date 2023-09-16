@@ -1,4 +1,4 @@
-package decathlon;
+package testrunner;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -6,7 +6,7 @@ public class Deca100MTest {
 
     @Test
     public void testCalcResultWithinRange(){
-        Deca100M deca100m = new Deca100M();
+        decathlon.Deca100M deca100m = new decathlon.Deca100M();
         double A = 25.4347;
         double B = 18;
         double C = 1.81;

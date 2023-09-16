@@ -1,4 +1,4 @@
-package common;
+package testrunner;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,7 +16,7 @@ public class InputResultTest {
 
         System.setIn(in);
 
-        InputResult inputResult = new InputResult();
+        common.InputResult inputResult = new common.InputResult();
 
         double result = inputResult.enterResult();
 
@@ -34,7 +34,7 @@ public class InputResultTest {
 
         System.setIn(in);
 
-        InputResult inputResult = new InputResult();
+        common.InputResult inputResult = new common.InputResult();
 
         double result = inputResult.enterResult();
 
@@ -46,7 +46,7 @@ public class InputResultTest {
     @Test
     //to check return method is working by saving 10.0
     void testReturnResult() {
-        InputResult inputResult = new InputResult();
+        common.InputResult inputResult = new common.InputResult();
 
         inputResult.inputResult = 10.0;
 
