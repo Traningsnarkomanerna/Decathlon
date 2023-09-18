@@ -15,5 +15,4 @@ public class CalcTrackAndField {
 		result = (int) (A * Math.pow((B - distance), C));
 		return result;
 	}
-
 }
