@@ -18,6 +18,7 @@ public class JavThrowTest {
         int expectedScore = (int) (A * Math.pow((B - distanceThrown), C));
         int actualScore = jt.getScore();
         assertEquals(expectedScore, actualScore);
+
     }
 }
 

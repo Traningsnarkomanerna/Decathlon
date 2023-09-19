@@ -38,7 +38,6 @@ public class DecaJavelinThrow {
 			}
 		}
 		System.out.println("The result is: " + score);
-
 	}
 	//added getScore for
 	public int getScore() {
