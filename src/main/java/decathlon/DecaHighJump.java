@@ -14,7 +14,7 @@ public class DecaHighJump {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on distance and height. Measured in centimeters.
-	public void calculateResult(double distance) {
+	public int calculateResult(double distance) {
 
 		while (active) {
 
@@ -38,6 +38,7 @@ public class DecaHighJump {
 		}
 		System.out.println("The result is: " + score);
 
-	}
+        return score;
+    }
 
 }
