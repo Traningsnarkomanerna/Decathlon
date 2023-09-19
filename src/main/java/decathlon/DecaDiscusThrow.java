@@ -14,7 +14,7 @@ public class DecaDiscusThrow {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on distance and height. Measured in meters.
-	public void calculateResult(double distance) {
+	public int calculateResult(double distance) {
 
 		while (active) {
 
@@ -38,6 +38,6 @@ public class DecaDiscusThrow {
 		}
 		System.out.println("The result is: " + score);
 
+		return score;
 	}
-
 }
