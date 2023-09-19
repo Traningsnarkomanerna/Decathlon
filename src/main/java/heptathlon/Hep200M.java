@@ -38,4 +38,5 @@ public class Hep200M {
 
 	}
 
+	public int getScore() {return score;}
 }
