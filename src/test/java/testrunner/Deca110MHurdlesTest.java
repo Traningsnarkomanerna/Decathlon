@@ -2,8 +2,8 @@ package testrunner;
 
 import common.CalcTrackAndField;
 import decathlon.Deca110MHurdles;
-import org.testng.annotations.Test;
 
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Deca110MHurdlesTest {
@@ -42,7 +42,7 @@ public class Deca110MHurdlesTest {
         int expected = 0;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class Deca110MHurdlesTest {
         int expected = 1;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class Deca110MHurdlesTest {
         int expected = 1;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
@@ -99,8 +99,9 @@ public class Deca110MHurdlesTest {
         int expected = 1556;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
+
     @Test
     public void testLowerBoundaryValuesResultsDeca110MHurdlesAbove() {
         CalcTrackAndField d110MHurdles = new CalcTrackAndField();
@@ -117,7 +118,7 @@ public class Deca110MHurdlesTest {
         int expected = 1554;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 }
 
