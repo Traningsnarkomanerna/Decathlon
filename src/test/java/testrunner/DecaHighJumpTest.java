@@ -1,4 +1,4 @@
-package decathlon;
+package testrunner;
 
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
