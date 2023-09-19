@@ -38,4 +38,8 @@ public class Deca110MHurdles {
 
 	}
 
+	public int getScore() {
+		return score;
+	}
+
 }

@@ -24,11 +24,7 @@ public class Deca110MHurdlesTest {
         int expected = 975;
 
         assertEquals(expected, actual);
-<<<<<<< HEAD
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
-=======
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
->>>>>>> c10a7fd (Added some unit-tests to 110M hurdles (Decathlon))
     }
 
     @Test
@@ -46,11 +42,7 @@ public class Deca110MHurdlesTest {
         int expected = 0;
 
         assertEquals(expected, actual);
-<<<<<<< HEAD
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
-=======
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
->>>>>>> c10a7fd (Added some unit-tests to 110M hurdles (Decathlon))
     }
 
     @Test
@@ -69,11 +61,7 @@ public class Deca110MHurdlesTest {
         int expected = 1;
 
         assertEquals(expected, actual);
-<<<<<<< HEAD
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
-=======
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
->>>>>>> c10a7fd (Added some unit-tests to 110M hurdles (Decathlon))
     }
 
     @Test
@@ -92,11 +80,7 @@ public class Deca110MHurdlesTest {
         int expected = 1;
 
         assertEquals(expected, actual);
-<<<<<<< HEAD
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
-=======
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
->>>>>>> c10a7fd (Added some unit-tests to 110M hurdles (Decathlon))
     }
 
     @Test
@@ -115,14 +99,9 @@ public class Deca110MHurdlesTest {
         int expected = 1556;
 
         assertEquals(expected, actual);
-<<<<<<< HEAD
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
-    }
-=======
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
->>>>>>> c10a7fd (Added some unit-tests to 110M hurdles (Decathlon))
     @Test
     public void testLowerBoundaryValuesResultsDeca110MHurdlesAbove() {
         CalcTrackAndField d110MHurdles = new CalcTrackAndField();
@@ -139,12 +118,7 @@ public class Deca110MHurdlesTest {
         int expected = 1554;
 
         assertEquals(expected, actual);
-<<<<<<< HEAD
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
-=======
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
->>>>>>> c10a7fd (Added some unit-tests to 110M hurdles (Decathlon))
     }
 }
-
 
