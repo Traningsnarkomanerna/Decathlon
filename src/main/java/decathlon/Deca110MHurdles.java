@@ -42,8 +42,4 @@ public class Deca110MHurdles {
         return score;
     }
 
-	public int getScore() {
-		return score;
-	}
-
 }
