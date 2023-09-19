@@ -2,8 +2,8 @@ package testrunner;
 
 import common.CalcTrackAndField;
 import decathlon.Deca110MHurdles;
-import org.testng.annotations.Test;
 
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Deca110MHurdlesTest {
