@@ -20,7 +20,7 @@ public class DecaShotPut {
 
 			try {
 				// Acceptable values.
-				if (distance < 1.5) {
+				if (distance < 1.52) {
 					System.out.println("Value too low");
 					distance = inputResult.enterResult();
 				} else if (distance > 30) {
@@ -40,5 +40,7 @@ public class DecaShotPut {
 		System.out.println("The result is: " + score);
 
 	}
-
+	public int getScore() {
+		return score;
+	}
 }
