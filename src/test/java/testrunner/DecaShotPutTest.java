@@ -1,9 +1,7 @@
 package testrunner;
 
-import common.CalcTrackAndField;
 import decathlon.DecaShotPut;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class DecaShotPutTest {
