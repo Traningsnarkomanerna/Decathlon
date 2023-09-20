@@ -24,7 +24,7 @@ public class DecaShotPutTest {
         System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
     }
 
-  /*  @Test
+    @Test
     public void testUpperBoundaryValuesDecaShotPutAbove() {
         CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
@@ -37,12 +37,12 @@ public class DecaShotPutTest {
         dSP.calculateResult(distance);
 
         int actual = dSP.getScore();
-        int expected = 1;
+        int expected = 1732;
 
         assertEquals(expected, actual);
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
-    */
+
 
     @Test
     public void testUpperBoundaryValuesDecaShotPutOnPoint() {
