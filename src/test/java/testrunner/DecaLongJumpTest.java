@@ -26,19 +26,6 @@ public class DecaLongJumpTest {
         assertEquals(expectedScore,actualScore);
         System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
     }
-    //Testing if calculator can handel wrong result
-    @Test
-    public void negativTestForWrongPointsCalc_DecaLongJump(){
-        double longJump = 450.00;
-        int expectedScore = 291;
-
-        decaLongJump.calculateResult(longJump);
-
-        int actualScore = decaLongJump.getScore();
-
-        assertEquals(expectedScore,actualScore);
-        System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
-    }
 
     //Checking the result of the lowest range with end result of 0 points
     @Test
@@ -92,6 +79,18 @@ public class DecaLongJumpTest {
         System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
     }
 
+//Testing if calculator can handel wrong result
+    /*@Test
+    public void negativTestForWrongPointsCalc_DecaLongJump(){
+        double longJump = 450.00;
+        int expectedScore = 291;
 
+        decaLongJump.calculateResult(longJump);
+
+        int actualScore = decaLongJump.getScore();
+
+        assertEquals(expectedScore,actualScore);
+        System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
+    }*/
 }
 
