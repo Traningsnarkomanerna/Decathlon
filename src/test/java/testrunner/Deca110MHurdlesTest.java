@@ -24,7 +24,7 @@ public class Deca110MHurdlesTest {
         int expected = 975;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
+        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
     }
 
     @Test
@@ -121,4 +121,5 @@ public class Deca110MHurdlesTest {
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 }
+
 
