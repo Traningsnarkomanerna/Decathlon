@@ -16,7 +16,22 @@ public class Hep100MHurdles {
     // Calculate the score based on time. All running events.
     public void calculateResult(double runningTime) {
 
-        while (active) {
+        try {
+            // Acceptable values.
+            if (runningTime >= 26.41)
+                score = 0;
+            else if (runningTime >= 9 && runningTime <= 26.4) {
+                score = calc.calculateTrack(A, B, C, runningTime);
+            } else {
+                score = 1799;
+            }
+        } catch (Exception e) {
+
+            System.out.println("The result is: " + score);
+        }
+    }
+
+       /* while (active) {
 
             try {
                 // Acceptable values.
@@ -37,6 +52,9 @@ public class Hep100MHurdles {
         }
         System.out.println("The result is " + score);
 
+    }*/
+    public int getScore() {
+        return score;
     }
 
 }
