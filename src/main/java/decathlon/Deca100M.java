@@ -14,7 +14,29 @@ public class Deca100M {
 
 	// Calculate the score based on time. All running events.
 	public void calculateResult(double runningTime) {
+		while (active) {
+			try {
+				if (runningTime < 5 || runningTime > 17.83) {
+					System.out.println("Invalid value. Please enter a time between 5 and 17.83 seconds.");
+					runningTime = inputResult.enterResult();
+				} else {
+					score = calc.calculateTrack(A, B, C, runningTime);
+					active = false;
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a valid number");
+				runningTime = inputResult.enterResult();
+			}
+		}
+		System.out.println("The result is " + score);
 
+	}
+		public int getScore() {
+		return score;
+		}
+}
+
+/*		First version of code
 		while (active) {
 
 			try {
@@ -36,8 +58,4 @@ public class Deca100M {
 		}
 		System.out.println("The result is " + score);
 
-	}
-	public int getScore() {
-		return score;
-	}
-}
+	}*/
