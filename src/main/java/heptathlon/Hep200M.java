@@ -15,6 +15,20 @@ public class Hep200M {
 	// Calculate the score based on time. All running events.
 	public void calculateResult(double runningTime) {
 
+		try {
+			// Acceptable values.
+			if (runningTime < 14)
+				score = 2158; // Score you can get if lower than 14 in this case, specifically 13.9
+			else if (runningTime >= 14 && runningTime <= 42.08) {
+				score = calc.calculateTrack(A, B, C, runningTime);
+			} else {
+				score = 0; // Score you can get if you are higher than 42.08
+			}
+		} catch (Exception e) {
+
+			System.out.println("The result is: " + score);
+		}
+		/*
 		while (active) {
 
 			try {
@@ -35,6 +49,9 @@ public class Hep200M {
 			}
 		}
 		System.out.println("The result is " + score);
+		 */
+
+
 
 	}
 
