@@ -1,16 +1,13 @@
 package testrunner;
 
-import common.CalcTrackAndField;
 import decathlon.DecaShotPut;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class DecaShotPutTest {
 
     @Test
     public void testCorrectResultsDecaShotPut() {
-        //CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
 
         double distance = 16;
@@ -26,12 +23,8 @@ public class DecaShotPutTest {
 
     @Test
     public void testUpperBoundaryValuesDecaShotPutAbove() {
-        CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
 
-        double A = 51.39;
-        double B = 1.5;
-        double C = 1.05;
         double distance = 30.01;
 
         dSP.calculateResult(distance);
@@ -46,13 +39,11 @@ public class DecaShotPutTest {
 
     @Test
     public void testUpperBoundaryValuesDecaShotPutOnPoint() {
-        //CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
 
         double distance = 30;
 
         dSP.calculateResult(distance);
-
 
         int actual = dSP.getScore();
         int expected = 1731;
@@ -63,7 +54,6 @@ public class DecaShotPutTest {
 
     @Test
     public void testUpperBoundaryValuesDecaShotPutBelow() {
-        //CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
 
         double distance = 29.99;
@@ -79,7 +69,6 @@ public class DecaShotPutTest {
 
     @Test
     public void testLowerBoundaryValuesDecaShotPutBelow() {
-        //CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
 
         double distance = 1.52;
@@ -95,7 +84,6 @@ public class DecaShotPutTest {
 
     @Test
     public void testLowerBoundaryValuesResultsShotPutOnPoint() {
-        //CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
 
         double distance = 1.53;
@@ -111,7 +99,6 @@ public class DecaShotPutTest {
 
     @Test
     public void testLowerBoundaryValuesResultsDeca110MHurdlesAbove() {
-        //CalcTrackAndField dShotPut = new CalcTrackAndField();
         DecaShotPut dSP = new DecaShotPut();
 
         double distance = 1.54;
