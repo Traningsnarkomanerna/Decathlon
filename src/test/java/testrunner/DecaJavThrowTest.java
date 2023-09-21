@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class JavThrowTest {
+public class DecaJavThrowTest {
     @Test
     public void testJavThrowWithinRange() {
         DecaJavelinThrow jt = new DecaJavelinThrow();
