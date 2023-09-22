@@ -13,16 +13,16 @@ public class Deca110MHurdles {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on time. All running events.
-	public void calculateResult(double distance) {
+	public void calculateResult(double runningTime) {
 
 		try {
 			// Acceptable values.
-			if (distance < 10)
-				score = 0;
-			else if (distance >= 10 && distance <= 28.09) {
-				score = calc.calculateTrack(A, B, C, distance);
+			if (runningTime < 10)
+				score = 1558;
+			else if (runningTime >= 10 && runningTime <= 28.09) {
+				score = calc.calculateTrack(A, B, C, runningTime);
 			} else {
-				score = 1556;
+				score = 0;
 			}
 		} catch (Exception e) {
 
