@@ -38,5 +38,8 @@ public class Hep800M {
 		System.out.println("The result is " + score);
 
 	}
+	public int getScore() {
+		return score;
+	}
 
 }
