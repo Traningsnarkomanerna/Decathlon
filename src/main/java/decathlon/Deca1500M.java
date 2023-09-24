@@ -39,5 +39,8 @@ public class Deca1500M {
 		System.out.println("The result is: " + score);
 
 	}
+	public int getScore() {
+		return score;
+	}
 
 }
