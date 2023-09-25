@@ -1,3 +1,5 @@
+package testrunner;
+
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -16,14 +18,15 @@ import java.io.FileInputStream;
 import org.junit.Assert;
 
 
-
 public class ExcelPrinterTest {
+	//Assumes c:\Eclipse\ exists!
 
 	private ExcelPrinter printer;
 
 	@Before
 	public void setUp() throws IOException {
 		printer = new ExcelPrinter("test");
+
 	}
 
 	@Test
@@ -45,13 +48,13 @@ public class ExcelPrinterTest {
 
 	@Test
 	public void testWrite() throws IOException {
+
 		ExcelPrinter printer = new ExcelPrinter("test");
 		Object[][] data = { { "Bob", "Fish", 30 }, { "Jane", "Austin", 25 } };
 		printer.add(data, "Sheet1");
 		printer.write();
-
 		// assertions to check that the file was created and contains the expected data
-		File file = new File("test.xlsx");
+		File file = new File("resultat_test.xlsx");
 		Assert.assertTrue(file.exists());
 
 		FileInputStream fis = new FileInputStream(file);

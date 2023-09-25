@@ -19,6 +19,10 @@ public class ExcelPrinter {
 		excelName = name;
 	}
 
+	public XSSFWorkbook getWorkbook() {
+		return workbook;
+	}
+
 	public void add(Object[][] data, String sheetName) {
 
 		XSSFSheet sheet = workbook.createSheet(sheetName);

@@ -1,6 +1,6 @@
 package testrunner;
 
-import org.junit.jupiter.api.Assertions;
+import common.Main;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -16,7 +16,7 @@ public class DecathlonIntegrationTest {
         String input = "Bob Fish\n1\n100";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        Decathlon.main(new String[]{});
+        Main.main(new String[]{});
         // Add assertions to test the behavior of the application
     }
 }
