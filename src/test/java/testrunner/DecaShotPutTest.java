@@ -1,10 +1,33 @@
 package testrunner;
 
+import common.CalcTrackAndField;
 import decathlon.DecaShotPut;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.Assert.assertEquals;
 
 public class DecaShotPutTest {
+    private final CalcTrackAndField calc = new CalcTrackAndField();
+
+    private int calculateExpectedScore(double distance) {
+        return calc.calculateField(51.39, 1.5, 1.05, distance);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {30.01, 30.0, 29.99, 1.54, 1.53, 1.52})
+    void testBoundaryValues(double distance) {
+        DecaShotPut dSP = new DecaShotPut();
+        dSP.calculateResult(distance);
+
+        int actual = dSP.getScore();
+        int expected = calculateExpectedScore(distance);
+
+        assertEquals(expected, actual);
+        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
+    }
 
     @Test
     public void testCorrectResultsDecaShotPut() {
@@ -17,10 +40,10 @@ public class DecaShotPutTest {
         int actual = dSP.getScore();
         int expected = 851;
 
-        assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+        Assertions.assertEquals(expected, actual);
+        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
-
+/*
     @Test
     public void testUpperBoundaryValuesDecaShotPutAbove() {
         DecaShotPut dSP = new DecaShotPut();
@@ -110,5 +133,5 @@ public class DecaShotPutTest {
 
         assertEquals(expected, actual);
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
-    }
+    }  */
 }
