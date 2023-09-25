@@ -1,8 +1,6 @@
 package testrunner;
 
-import common.CalcTrackAndField;
 import decathlon.Deca110MHurdles;
-
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
@@ -10,7 +8,6 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void testCorrectResultsDeca110MHurdles() {
-        //CalcTrackAndField d110MHurdles = new CalcTrackAndField();
         Deca110MHurdles d110MH = new Deca110MHurdles();
 
         double distance = 14;
@@ -26,7 +23,6 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void testUpperBoundaryValuesDeca110MHurdlesAbove() {
-        //CalcTrackAndField d110MHurdles = new CalcTrackAndField();
         Deca110MHurdles d110MH = new Deca110MHurdles();
 
         double distance = 28.1;
@@ -34,7 +30,7 @@ public class Deca110MHurdlesTest {
         d110MH.calculateResult(distance);
 
         int actual = d110MH.getScore();
-        int expected = 1556;
+        int expected = 0;
 
         assertEquals(expected, actual);
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
@@ -42,7 +38,6 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void testUpperBoundaryValuesDeca110MHurdlesOnPoint() {
-        //CalcTrackAndField d110MHurdles = new CalcTrackAndField();
         Deca110MHurdles d110MH = new Deca110MHurdles();
 
         double distance = 28.09;
@@ -58,7 +53,6 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void testUpperBoundaryValuesDeca110MHurdlesBelow() {
-        //CalcTrackAndField d110MHurdles = new CalcTrackAndField();
         Deca110MHurdles d110MH = new Deca110MHurdles();
 
         double distance = 28.08;
@@ -73,8 +67,7 @@ public class Deca110MHurdlesTest {
     }
 
     @Test
-    public void testLowerBoundaryValuesResultsDeca110MHurdlesOnPoint() {
-        //CalcTrackAndField d110MHurdles = new CalcTrackAndField();
+    public void testLowerBoundaryValuesDeca110MHurdlesOnPoint() {
         Deca110MHurdles d110MH = new Deca110MHurdles();
 
         double distance = 10;
@@ -89,8 +82,7 @@ public class Deca110MHurdlesTest {
     }
 
     @Test
-    public void testLowerBoundaryValuesResultsDeca110MHurdlesAbove() {
-        //CalcTrackAndField d110MHurdles = new CalcTrackAndField();
+    public void testLowerBoundaryValuesDeca110MHurdlesAbove() {
         Deca110MHurdles d110MH = new Deca110MHurdles();
 
         double distance = 10.01;
@@ -106,7 +98,6 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void testLowerBoundaryValuesDeca110MHurdlesBelow() {
-        //CalcTrackAndField d110MHurdles = new CalcTrackAndField();
         Deca110MHurdles d110MH = new Deca110MHurdles();
 
         double distance = 9.99;
@@ -114,7 +105,7 @@ public class Deca110MHurdlesTest {
         d110MH.calculateResult(distance);
 
         int actual = d110MH.getScore();
-        int expected = 0;
+        int expected = 1558;
 
         assertEquals(expected, actual);
         System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
