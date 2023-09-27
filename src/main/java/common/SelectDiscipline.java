@@ -64,6 +64,12 @@ public class SelectDiscipline {
 
 	}
 
+	//get the selected discipline.
+	public int getDisciplineSelected() {
+		return disciplineSelected;
+	}
+
+
 	// Check input of discipline.
 	public void makeSelection() {
 		switch (disciplineSelected) {
