@@ -13,7 +13,7 @@ public class Deca400MTest {
         double B = 82;
         double C = 1.81;
 
-        double runningTime = 50.0;
+        double runningTime = 49.0;
         int expectedScore = (int) (A * Math.pow((B - runningTime), C));
         deca400M.calculateResult(runningTime);
 
