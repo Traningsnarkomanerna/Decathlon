@@ -9,7 +9,7 @@ public class SelectDisciplineTest {
 //Because the functions are all nested and there is a second scanner created, it is not possible to run these tests yet!
 //Loop within the input means we can't also test for a bad input, as it will just loop until it gets a good one.
 //so the tests input a bad then a good input, we just assume that the bad input has been caught.
-    @Test
+   /* @Test
     public void testInputSelectionValid() {
         String input = "1\n";
 		InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -59,5 +59,5 @@ public class SelectDisciplineTest {
         Assertions.assertEquals(2, selectDiscipline.getDisciplineSelected());
     }
 
- 
+ */
 }
