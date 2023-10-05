@@ -69,7 +69,8 @@ public class SelectDiscipline {
 				for (String competitor : competitors) {
 					System.out.println("Enter result for " + competitor + " in discipline " + getDisciplineName(disciplineSelected) + ":");
 					double result = inputResult.enterResult();
-					calculateResult(disciplineSelected, result);
+					calculateResult(disciplineSelected, result, competitor);
+					reinitializeInstances();
 				}
 				return results;
 			} else {
@@ -94,7 +95,7 @@ public class SelectDiscipline {
 		return false;
 	}
 
-	public void calculateResult(int disciplineSelected, double result) {
+	public void calculateResult(int disciplineSelected, double result, String competitor) {
 		int points = 0;
 		if (category == Menu.Category.DECATHLON) {
 			// Handle Decathlon disciplines
@@ -181,7 +182,7 @@ public class SelectDiscipline {
 				}
 			}
 		}
-		Score score = new Score(competitors[0], getDisciplineName(disciplineSelected), points);
+		Score score = new Score(competitor, getDisciplineName(disciplineSelected), points);
 		results.add(score);
 	}
 
@@ -222,5 +223,26 @@ public class SelectDiscipline {
 			case DECATHLON -> this.decathlonDisciplines[disciplineSelected - 1];
 			case HEPTATHLON -> this.heptathlonDisciplines[disciplineSelected - 1];
 		};
+	}
+
+	private void reinitializeInstances() {
+		// Reinitialize instances
+		deca100M = new Deca100M();
+		deca400M = new Deca400M();
+		deca110MHurdles = new Deca110MHurdles();
+		deca1500M = new Deca1500M();
+		decaLongJump = new DecaLongJump();
+		highJump = new DecaHighJump();
+		discusThrow = new DecaDiscusThrow();
+		decaShotPut = new DecaShotPut();
+		decaJavelinThrow = new DecaJavelinThrow();
+		poleVault = new DecaPoleVault();
+		hep200M = new Hep200M();
+		hep800M = new Hep800M();
+		hep100MHurdles = new Hep100MHurdles();
+		hepHighJump = new HeptHightJump();
+		hepLongJump = new HeptLongJump();
+		hepShotPut = new HeptShotPut();
+		hepJavelinThrow = new HeptJavelinThrow();
 	}
 }
