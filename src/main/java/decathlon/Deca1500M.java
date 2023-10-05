@@ -42,8 +42,4 @@ public class Deca1500M {
 	public int getScore() {
 		return score;
 	}
-
-	public int getScore() {
-		return score;
-	}
 }

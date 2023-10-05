@@ -41,8 +41,4 @@ public class Hep800M {
 	public int getScore() {
 		return score;
 	}
-
-	public int getScore() {
-		return score;
-	}
 }
