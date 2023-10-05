@@ -5,9 +5,9 @@ import common.*;
 public class Deca1500M {
 
 	private int score;
-	private double A = 0.03768;
-	private double B = 480;
-	private double C = 1.85;
+	private static final double A = 0.03768;
+	private static final double B = 480;
+	private static final double C = 1.85;
 	boolean active = true;
 
 	CalcTrackAndField calc = new CalcTrackAndField();
@@ -42,5 +42,4 @@ public class Deca1500M {
 	public int getScore() {
 		return score;
 	}
-
 }

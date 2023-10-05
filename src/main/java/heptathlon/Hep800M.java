@@ -5,9 +5,9 @@ import common.*;
 public class Hep800M {
 
 	private int score;
-	private double A = 0.11193;
-	private double B = 254;
-	private double C = 1.88;
+	private static final double A = 0.11193;
+	private static final double B = 254;
+	private static final double C = 1.88;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
@@ -41,5 +41,4 @@ public class Hep800M {
 	public int getScore() {
 		return score;
 	}
-
 }
