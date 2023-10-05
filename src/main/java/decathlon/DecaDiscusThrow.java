@@ -6,9 +6,9 @@ import common.InputResult;
 public class DecaDiscusThrow {
 
 	private int score;
-	private double A = 12.91;
-	private double B = 4;
-	private double C = 1.1;
+	private static final double A = 12.91;
+	private static final double B = 4;
+	private static final double C = 1.1;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
@@ -38,6 +38,10 @@ public class DecaDiscusThrow {
 		}
 		System.out.println("The result is: " + score);
 
+		return score;
+	}
+
+	public int getScore() {
 		return score;
 	}
 }
