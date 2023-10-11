@@ -1,5 +1,8 @@
 package common;
 
+import excel.ExcelPrinter;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -57,7 +60,7 @@ public class Menu {
 
 		while (active) {
 			// Print out the menu alternatives which are. Add competitor, add result, show results and exit.
-			System.out.println("Please select an option:\n1. Add competitors\n2. Add results\n3. Show results\n4. Exit");
+			System.out.println("Please select an option:\n1. Add competitors\n2. Add results\n3. Show results\n4. Write results\n5. Exit");
 			int input = sc.nextInt();
 			switch (input) {
 				case 1 -> {
@@ -74,7 +77,19 @@ public class Menu {
 					results = selectDiscipline.inputSelection();
 				}
 				case 3 -> showResults();
-				case 4 -> active = false;
+				case 4 -> {
+					ExcelPrinter excelPrinter = null;
+					try {
+						excelPrinter = new ExcelPrinter(sc);
+					} catch (IOException e) {
+						throw new RuntimeException(e);
+					}
+					//clear the scanner buffer
+					sc.nextLine();
+
+					excelPrinter.writeResults(results);
+				}
+				case 5 -> active = false;
 				default -> System.out.println("Please select a valid option.");
 			}
 		}
