@@ -42,13 +42,13 @@ public class SelectDiscipline {
 
 	//Array of disciplines for Decathlon. Along with how it's measured
 	private final String[] decathlonDisciplines = { "100 meters. (Measured in seconds)", "400 meters. (Measured in seconds)",
-			"110 meters hurdles. (Measured in seconds)", "1500 meters. (Measured in minutes and seconds)", "Long Jump. (Measured in centimeters)",
+			"110 meters hurdles. (Measured in seconds)", "1500 meters. (Measured in seconds)", "Long Jump. (Measured in centimeters)",
 			"High Jump. (Measured in centimeters)", "Pole Vault. (Measured in centimeters)", "Discus Throw. (Measured in meters)",
 			"Javelin Throw. (Measured in meters)", "Shot Put. (Measured in meters)" };
 
 	//Array of disciplines for Heptathlon. Along with how it's measured
 	private final String[] heptathlonDisciplines = { "200m (measured in seconds)", "800m (measured in seconds)",
-			"100m Hurdles (measured in seconds)", "High Jump (measured in meters)", "Long Jump (measured in meters)",
+			"100m Hurdles (measured in seconds)", "High Jump (measured in centimeters)", "Long Jump (measured in centimeters)",
 			"Javelin Throw (measured in meters)", "Shot Put (measured in meters)" };
 
 
