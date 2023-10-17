@@ -49,7 +49,7 @@ public class SelectDiscipline {
 	//Array of disciplines for Heptathlon. Along with how it's measured
 	private final String[] heptathlonDisciplines = { "200m (measured in seconds)", "800m (measured in seconds)",
 			"100m Hurdles (measured in seconds)", "High Jump (measured in centimeters)", "Long Jump (measured in centimeters)",
-			"Javelin Throw (measured in meters)", "Shot Put (measured in meters)" };
+			"Shot Put (measured in meters)", "Javelin Throw (measured in meters)" };
 
 
 	public SelectDiscipline(Menu.Category category, String[] competitors, List<Score> results) {
