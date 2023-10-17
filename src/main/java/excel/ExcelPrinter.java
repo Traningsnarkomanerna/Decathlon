@@ -125,11 +125,35 @@ public class ExcelPrinter {
 			}
 		
 		}
-
+		HashMap<String, Double> totals = new HashMap<String, Double>();
 		//add data to workbook
 		for(String competitorName : data.keySet()) {
 			addCompetitor(competitorName, data.get(competitorName));
 		}
+
+		//write a totals sheet, put it first
+		XSSFSheet sheet = workbook.createSheet("Totals");
+		int rowCount = 0;
+		//create header row from results keys
+		Row row = sheet.createRow(rowCount);
+		rowCount++;
+		int columnCount = 0;
+		for (Object field : new String[]{"Competitor", "Total score"}) {
+			Cell cell = row.createCell(columnCount);
+			columnCount++;
+			cell.setCellValue((String) field);
+		}
+		//add totals
+		for(String competitorName : data.keySet()) {
+			double totalScore = 0;
+			for (Score score : data.get(competitorName)) {
+				totalScore += score.getResult();
+			}
+			totals.put(competitorName, totalScore);
+		}
+
+
+
 
 		//write workbook to file
 		try {
@@ -156,7 +180,7 @@ public class ExcelPrinter {
 	}
 
 
-	public void addCompetitor(String name, Score[] results) {
+	public double addCompetitor(String name, Score[] results) {
 
 		//check if sheet exists, if so delete it
 		if (workbook.getSheet(name) != null) {
@@ -177,7 +201,8 @@ public class ExcelPrinter {
 			cell.setCellValue((String) field);
 		}
 
-
+		//add results
+		double totalScore = 0;
 		for (Score score : results) {
 			String discipline = score.getDiscipline();
 			double result = score.getResult();
@@ -188,9 +213,18 @@ public class ExcelPrinter {
 			cell.setCellValue(discipline);
 			cell = row.createCell(1);
 			cell.setCellValue(result);
+			totalScore += result;
 		}
 
+		//TODO: add total score
+		row = sheet.createRow(rowCount);
+		rowCount++;
+		Cell cell = row.createCell(0);
+		cell.setCellValue("Total score");
+		cell = row.createCell(1);
+		cell.setCellValue(totalScore);
 
+		return totalScore;
 	}
 
 
@@ -227,6 +261,7 @@ public class ExcelPrinter {
 		FileOutputStream out = new FileOutputStream(fileName);
 		workbook.write(out);
 		//workbook.close();
+		System.out.println("File saved to "+fileName);
 	}
 
 }
