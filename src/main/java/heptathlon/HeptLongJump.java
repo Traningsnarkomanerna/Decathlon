@@ -19,10 +19,11 @@ public class HeptLongJump {
 		while (active) {
 
 			try {
-				// Acceptable values.
-				if (distance < 213.26) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
+				//result = (int) (A * Math.pow((distance - 210), C));
+				// any distance smaller than 210 will lead to score 0
+				if (distance <= 210) {
+					score=0;
+					active = false;
 				} else if (distance > 1100) {
 
 					System.out.println("Value too high");

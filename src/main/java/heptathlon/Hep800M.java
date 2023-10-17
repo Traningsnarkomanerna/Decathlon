@@ -18,14 +18,11 @@ public class Hep800M {
 		while (active) {
 
 			try {
-				// Acceptable values.
-				if (runningTime < 70) {
-					System.out.println("Value too low");
-					runningTime = inputResult.enterResult();
-				} else if (runningTime > 250.79) {
-					// competitor gets 1 point in 250.79 sec
-					System.out.println("Value too high");
-					runningTime = inputResult.enterResult();
+				// result = (int) (A * Math.pow((254-distance), C));
+				// the score should be 0 if the result is not smaller than 254
+				if (runningTime >= 254) {
+					score=0;
+					active = false;
 				} else {
 					score = calc.calculateTrack(A, B, C, runningTime);
 					active = false;
