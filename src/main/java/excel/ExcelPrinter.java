@@ -96,7 +96,7 @@ public class ExcelPrinter {
 			return;
 		}
 		//create workbook
-		XSSFWorkbook workbook = new XSSFWorkbook();
+		//XSSFWorkbook workbook = new XSSFWorkbook();
 
 		//define data as an array of objects
 		HashMap<String, Score[]> data = new HashMap<String, Score[]>();
@@ -127,11 +127,6 @@ public class ExcelPrinter {
 		}
 		HashMap<String, Double> totals = new HashMap<String, Double>();
 		//add data to workbook
-		for(String competitorName : data.keySet()) {
-			addCompetitor(competitorName, data.get(competitorName));
-		}
-
-		//write a totals sheet, put it first
 		XSSFSheet sheet = workbook.createSheet("Totals");
 		int rowCount = 0;
 		//create header row from results keys
@@ -143,16 +138,17 @@ public class ExcelPrinter {
 			columnCount++;
 			cell.setCellValue((String) field);
 		}
-		//add totals
+
+		double totalScore = 0;
 		for(String competitorName : data.keySet()) {
-			double totalScore = 0;
-			for (Score score : data.get(competitorName)) {
-				totalScore += score.getResult();
-			}
-			totals.put(competitorName, totalScore);
+			totalScore = addCompetitor(competitorName, data.get(competitorName));
+			row = sheet.createRow(rowCount);
+			rowCount++;
+			Cell cell = row.createCell(0);
+			cell.setCellValue(competitorName);
+			cell = row.createCell(1);
+			cell.setCellValue(totalScore);
 		}
-
-
 
 
 		//write workbook to file
