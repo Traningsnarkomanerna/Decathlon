@@ -16,17 +16,13 @@ public class DecaLongJump {
 	public void calculateResult(double distance) {
 
 		while (active) {
-
+			//result = (int) (A * Math.pow((distance - 220), C));
+			//according to this formula, the score should be 0 if the result is smaller than 220
 			try {
 				// Acceptable values.
-				if (distance < 223.99) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
-				} else if (distance > 1000) {
-
-					System.out.println("Value too high");
-					distance = inputResult.enterResult();
-
+				if (distance <= 220) {
+					score=0;
+					active = false;
 				} else {
 
 					score = calc.calculateField(A, B, C, distance);

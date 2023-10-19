@@ -19,14 +19,12 @@ public class DecaHighJump {
 		while (active) {
 
 			try {
-				// Acceptable values.
-				if (distance < 77) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
-				} else if (distance > 300) {
-					System.out.println("Value too high");
-					distance = inputResult.enterResult();
-				} else {
+				// result = (int) (A * Math.pow((distance - 75), C));
+				//according to this formula, the score should be 0 if the result is smaller than 75
+				if (distance <= 75) {
+					score=0;
+					active = false;
+				}  else {
 
 					score = calc.calculateField(A, B, C, distance);
 					active = false;

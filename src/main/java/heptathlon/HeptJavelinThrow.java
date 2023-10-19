@@ -16,15 +16,14 @@ public class HeptJavelinThrow {
     // Calculate the score based on distance and height. Measured in metres.
     public void calculateResult(double distance) {
         while (active) {
-            try {
-                // Acceptable values.
-                if (distance < 3.86) {
-                    System.out.println("Value too low");
-                    distance = inputResult.enterResult();
-                } else if (distance > 100) {
-                    System.out.println("Value too high");
-                    distance = inputResult.enterResult();
-                } else {
+
+
+            try {            //result = (int) (A * Math.pow((distance - 3.8), C)
+                             //the score should be 0 if the result is smaller than 3.8
+                if (distance <= 3.8) {
+                    score=0;
+                    active = false;
+                }  else {
                     score = calc.calculateField(A, B, C, distance);
                     active = false;
                 }
