@@ -18,12 +18,15 @@ public class HeptJavelinThrow {
         while (active) {
 
 
-            try {            //result = (int) (A * Math.pow((distance - 3.8), C)
-                             //the score should be 0 if the result is smaller than 3.8
+            try { //result = (int) (A * Math.pow((distance - 3.8), C)
+                  //the score should be 0 if the result is smaller than 3.8
                 if (distance <= 3.8) {
-                    score=0;
+                    score = 0;
                     active = false;
-                }  else {
+                } else if (distance > 100) {   //world record 80.00 m
+                    System.out.println("Value too high");
+                    distance = inputResult.enterResult();
+                } else {
                     score = calc.calculateField(A, B, C, distance);
                     active = false;
                 }
@@ -34,6 +37,9 @@ public class HeptJavelinThrow {
         }
         System.out.println("The result is: " + score);
     }
-    public int getScore(){return score;}
+
+    public int getScore() {
+        return score;
+    }
 
 }
