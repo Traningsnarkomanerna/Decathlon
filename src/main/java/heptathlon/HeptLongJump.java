@@ -20,12 +20,12 @@ public class HeptLongJump {
 
 			try {
 				//result = (int) (A * Math.pow((distance - 210), C));
+
 				if (distance <= 210) {
 					score=0;
 					active = false;
 				} else if (distance > 1500) {
-
-					System.out.println("Value too high");
+          System.out.println("Value too high");
 					distance = inputResult.enterResult();
 
 				} else {
