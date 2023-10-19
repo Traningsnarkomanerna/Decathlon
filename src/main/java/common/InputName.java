@@ -14,9 +14,9 @@ public class InputName {
 		Scanner sc = new Scanner(System.in);
 		
 		while (active) {
-			System.out.println("Please enter the competitor's name:");
+			System.out.println("Please enter the competitor's name and country (Name - Country):");
 			compName = sc.nextLine();
-			if (!compName.matches(".*[a-öA-ö]")) {
+			if (!compName.matches(".*[a-ï¿½A-ï¿½]")) {
 				System.out.println("Only use letters when putting in competitors name.");
 
 			} else {
