@@ -5,7 +5,7 @@ import common.InputResult;
 
 public class DecaHighJump {
 
-ZCL_branch2
+
     private int score;
     private static final double A = 0.8465;
     private static final double B = 75;
