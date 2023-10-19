@@ -20,13 +20,17 @@ public class Hep800M {
 			try {
 				// result = (int) (A * Math.pow((254-distance), C));
 				// the score should be 0 if the result is not smaller than 254
-				if (runningTime >= 254) {
+				if (runningTime < 70) {
+					System.out.println("Value too low");
+					runningTime = inputResult.enterResult();
+				} else if (runningTime >= 254) {
 					score=0;
 					active = false;
 				} else {
 					score = calc.calculateTrack(A, B, C, runningTime);
 					active = false;
 				}
+
 			} catch (Exception e) {
 
 				System.out.println("Please enter numbers");

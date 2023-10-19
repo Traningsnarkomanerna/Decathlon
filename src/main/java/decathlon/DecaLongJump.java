@@ -19,13 +19,16 @@ public class DecaLongJump {
 			//result = (int) (A * Math.pow((distance - 220), C));
 			//according to this formula, the score should be 0 if the result is smaller than 220
 			try {
-				// Acceptable values.
+
 				if (distance <= 220) {
 					score=0;
 					active = false;
-				} else {
-
-					score = calc.calculateField(A, B, C, distance);
+				} else if (distance > 1500) {   //world record 8.95 m
+					System.out.println("Value too high");
+					distance = inputResult.enterResult();
+				}
+				else {
+          score = calc.calculateField(A, B, C, distance);
 					active = false;
 				}
 			} catch (Exception e) {
