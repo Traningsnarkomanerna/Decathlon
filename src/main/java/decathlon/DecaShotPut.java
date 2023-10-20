@@ -14,7 +14,7 @@ public class DecaShotPut {
     InputResult inputResult = new InputResult();
 
     // Calculate the score based on distance and height. Measured in meters.
-    // result = (int) (A * Math.pow((distance - 1.5), C));
+
     public void calculateResult(double distance) {
 
         while (active) {

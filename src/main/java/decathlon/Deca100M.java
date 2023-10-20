@@ -12,7 +12,7 @@ public class Deca100M {
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
 
-	// Calculate the score based on time. All running events.  result = (int) (A * Math.pow((18 - distance), C));
+	// Calculate the score based on time. All running events.
 	public void calculateResult(double runningTime) {
 		while (active) {
 			try {

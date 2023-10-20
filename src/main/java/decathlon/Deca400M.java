@@ -14,7 +14,7 @@ public class Deca400M {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on time. All running events.
-	// result = (int) (A * Math.pow((82-distance), C));
+
 	public void calculateResult(double runningTime) {
 
 		while (active) {

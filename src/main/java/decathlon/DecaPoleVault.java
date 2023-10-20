@@ -14,7 +14,7 @@ public class DecaPoleVault {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on distance and height. Measured in centimetres.
-	// result = (int) (A * Math.pow((distance - 100), C));
+
 	public void calculateResult(double distance) {
 
 		while (active) {
