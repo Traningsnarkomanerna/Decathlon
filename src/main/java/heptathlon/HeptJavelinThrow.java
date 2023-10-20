@@ -16,8 +16,8 @@ public class HeptJavelinThrow {
     // Calculate the score based on distance and height. Measured in metres.
     public void calculateResult(double distance) {
         while (active) {
-
-                  //the score should be 0 if the result is smaller than 3.8
+            try {
+                //the score should be 0 if the result is smaller than 3.8
                 if (distance <= 3.8) {
                     score = 0;
                     active = false;
