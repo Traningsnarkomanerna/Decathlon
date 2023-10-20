@@ -80,7 +80,7 @@ public class SelectDiscipline {
 		} catch (NullPointerException e){
 			System.out.println("Competitors must be added before results, try again.");
 			return new ArrayList<>();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Invalid input, try again.");
 			System.out.println();
 			inputSelection();
