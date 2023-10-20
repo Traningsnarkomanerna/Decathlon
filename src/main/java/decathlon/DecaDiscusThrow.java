@@ -14,15 +14,16 @@ public class DecaDiscusThrow {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on distance and height. Measured in meters.
+	// result = (int) (A * Math.pow((distance - 4), C));
 	public int calculateResult(double distance) {
 
 		while (active) {
 
 			try {
 				// Acceptable values.
-				if (distance < 4.1) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
+				if (distance <= 4) {
+					score=0;
+					active = false;
 				} else if (distance > 85) {
 					System.out.println("Value too high");
 					distance = inputResult.enterResult();

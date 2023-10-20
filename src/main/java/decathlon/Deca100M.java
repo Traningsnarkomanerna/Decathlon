@@ -12,13 +12,17 @@ public class Deca100M {
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
 
-	// Calculate the score based on time. All running events.
+	// Calculate the score based on time. All running events.  result = (int) (A * Math.pow((18 - distance), C));
 	public void calculateResult(double runningTime) {
 		while (active) {
 			try {
-				if (runningTime < 5 || runningTime > 17.83) {
-					System.out.println("Invalid value. Please enter a time between 5 and 17.83 seconds.");
+				if (runningTime < 5 ) {
+					System.out.println("Value too low");
 					runningTime = inputResult.enterResult();
+				} else if (runningTime>=18) {
+					score=0;
+					active = false;
+
 				} else {
 					score = calc.calculateTrack(A, B, C, runningTime);
 					active = false;
@@ -36,26 +40,3 @@ public class Deca100M {
 		}
 }
 
-/*		First version of code
-		while (active) {
-
-			try {
-				// Acceptable values.
-				if (runningTime < 5) {
-					System.out.println("Value too low");
-					runningTime = inputResult.enterResult();
-				} else if (runningTime > 17.83) {
-					System.out.println("Value too high");
-					runningTime = inputResult.enterResult();
-				} else {
-					score = calc.calculateTrack(A, B, C, runningTime);
-					active = false;
-				}
-			} catch (Exception e) {
-
-				System.out.println("Please enter numbers");
-			}
-		}
-		System.out.println("The result is " + score);
-
-	}*/
