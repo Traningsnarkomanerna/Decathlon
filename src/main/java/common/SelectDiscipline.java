@@ -1,12 +1,11 @@
 package common;
 
+import decathlon.*;
+import heptathlon.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import decathlon.*;
-
-import heptathlon.*;
 
 public class SelectDiscipline {
 
@@ -78,7 +77,10 @@ public class SelectDiscipline {
 				inputSelection();
 			}
 
-		} catch (Exception e) {
+		} catch (NullPointerException e){
+			System.out.println("Competitors must be added before results, try again.");
+			return new ArrayList<>();
+		}catch (Exception e) {
 			System.out.println("Invalid input, try again.");
 			System.out.println();
 			inputSelection();
