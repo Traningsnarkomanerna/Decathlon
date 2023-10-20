@@ -133,12 +133,12 @@ public class SelectDiscipline {
 					points = discusThrow.getScore();
 				}
 				case 9 -> {
-					decaShotPut.calculateResult(result);
-					points = decaShotPut.getScore();
-				}
-				case 10 -> {
 					decaJavelinThrow.calculateResult(result);
 					points = decaJavelinThrow.getScore();
+				}
+				case 10 -> {
+					decaShotPut.calculateResult(result);
+					points = decaShotPut.getScore();
 				}
 				default -> {
 					System.out.println("Invalid discipline selection, please try again.");

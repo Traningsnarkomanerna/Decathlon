@@ -19,6 +19,7 @@ public class DecaLongJump {
 			//result = (int) (A * Math.pow((distance - 220), C));
 			//according to this formula, the score should be 0 if the result is smaller than 220
 			try {
+
 				if (distance <= 220) {
 					score=0;
 					active = false;
@@ -27,7 +28,7 @@ public class DecaLongJump {
 					distance = inputResult.enterResult();
 				}
 				else {
-					score = calc.calculateField(A, B, C, distance);
+
 					active = false;
 				}
 			} catch (Exception e) {
