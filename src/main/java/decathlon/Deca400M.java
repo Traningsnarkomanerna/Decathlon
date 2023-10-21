@@ -14,6 +14,7 @@ public class Deca400M {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on time. All running events.
+
 	public void calculateResult(double runningTime) {
 
 		while (active) {
@@ -23,9 +24,9 @@ public class Deca400M {
 				if (runningTime < 20) {
 					System.out.println("Value too low");
 					runningTime = inputResult.enterResult();
-				} else if (runningTime > 81.21) {
-					System.out.println("Value too high");
-					runningTime = inputResult.enterResult();
+				} else if (runningTime >= 81) {
+					score=0;
+					active = false;
 				} else {
 
 					score = calc.calculateTrack(A, B, C, runningTime);

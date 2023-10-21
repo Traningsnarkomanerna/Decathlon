@@ -28,7 +28,7 @@ public class DecaLongJump {
 					distance = inputResult.enterResult();
 				}
 				else {
-          score = calc.calculateField(A, B, C, distance);
+
 					active = false;
 				}
 			} catch (Exception e) {

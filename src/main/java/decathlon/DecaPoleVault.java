@@ -14,15 +14,16 @@ public class DecaPoleVault {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on distance and height. Measured in centimetres.
+
 	public void calculateResult(double distance) {
 
 		while (active) {
 
 			try {
 				// Acceptable values.
-				if (distance < 102.57) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
+				if (distance <= 100) {
+					score=0;
+					active = false;
 
 				} else if (distance > 1000) {
 
