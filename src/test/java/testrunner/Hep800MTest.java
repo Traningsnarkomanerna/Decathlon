@@ -1,42 +1,115 @@
 package testrunner;
 
+import common.CalcTrackAndField;
 import heptathlon.Hep800M;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.Assert.assertEquals;
 
 public class Hep800MTest {
 
-    @Test
-    public void test1() { //to check if the result has been rounded down
-        Hep800M test = new Hep800M();
+    private final CalcTrackAndField calc = new CalcTrackAndField();
 
-        test.calculateResult(250);
-        //int expected =1;
-        int actual = test.getScore();   //A*(B-P) C
-        int expected = (int) Math.floor(0.11193 * Math.pow( 254-250, 1.88));
-        assertEquals(expected, actual);
-    }
-    // This test doesn't work because of faulty if-else statement in program.
-  /*  @Test
-    public void test2() { //to check a typical number, when B=P, the result should be 0 according to the formula
-        Hep800M test = new Hep800M();
-
-        test.calculateResult(254);
-        int expected =0;
-        int actual = test.getScore();
-        assertEquals(expected, actual);
-    }   */
-
-    @Test
-    public void test3() { // put in a random valid number to check if the calculator works properly
-        Hep800M test = new Hep800M();
-
-        test.calculateResult(70);
-        int expected =2026;
-        int actual = test.getScore();
-        assertEquals(expected, actual);
+    private int calculateExpectedScore(double runningTime) {
+        return calc.calculateTrack(0.11193, 254, 1.88, runningTime);
     }
 
-//test case 1,2 failed as the developer has set two acceptable values in the program which is not included in the requirement
+    @Test
+    public void calculateResult_ValidRunningTime_EqualsCorrectResult() {
+        Hep800M h800M = new Hep800M();
+
+        double runningTime = 120;
+
+        h800M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = h800M.getScore();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeAboveUpperBoundary_EqualsCorrectResult() {
+        Hep800M h800M = new Hep800M();
+
+        double runningTime = 255;
+
+        h800M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = h800M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeOnUpperBoundary_EqualsCorrectResult() {
+        Hep800M h800M = new Hep800M();
+
+        double runningTime = 254;
+
+        h800M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = h800M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeBelowUpperBoundary_EqualsCorrectResult() {
+        Hep800M h800M = new Hep800M();
+
+        double runningTime = 253;
+
+        h800M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = h800M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeAboveLowerBoundary_EqualsCorrectResult() {
+        Hep800M h800M = new Hep800M();
+
+        double runningTime = 71;
+
+        h800M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = h800M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeOnLowerBoundary_EqualsCorrectResult() {
+        Hep800M h800M = new Hep800M();
+
+        double runningTime = 70;
+
+        h800M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = h800M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeBelowLowerBoundary_EqualsNegativeOne() {
+        Hep800M h800M = new Hep800M();
+
+        double runningTime = 69;
+
+        h800M.calculateResult(runningTime);
+
+        int expected = -1;
+        int actual = h800M.getScore();
+
+        assertEquals(expected, actual);
+    }
 }

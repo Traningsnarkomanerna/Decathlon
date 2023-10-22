@@ -1,114 +1,108 @@
 package testrunner;
 
+import common.CalcTrackAndField;
 import decathlon.Deca110MHurdles;
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class Deca110MHurdlesTest {
+    private final CalcTrackAndField calc = new CalcTrackAndField();
 
-    @Test
-    public void testCorrectResultsDeca110MHurdles() {
-        Deca110MHurdles d110MH = new Deca110MHurdles();
+    private int calculateExpectedScore(double runningTime) {
+        return calc.calculateTrack(5.74352, 28.5, 1.92, runningTime);
+    }
 
-        double distance = 14;
+    private Deca110MHurdles deca110MHurdles;
 
-        d110MH.calculateResult(distance);
-
-        int actual = d110MH.getScore();
-        int expected = 975;
-
-        assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+    @Before
+    public void setUp() {
+        deca110MHurdles = new decathlon.Deca110MHurdles();
     }
 
     @Test
-    public void testUpperBoundaryValuesDeca110MHurdlesAbove() {
-        Deca110MHurdles d110MH = new Deca110MHurdles();
+    public void calculateResult_ValidRunningTime_EqualsCorrectResult() {
+        double runningTime = 14;
 
-        double distance = 28.1;
+        deca110MHurdles.calculateResult(runningTime);
 
-        d110MH.calculateResult(distance);
-
-        int actual = d110MH.getScore();
-        int expected = 0;
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca110MHurdles.getScore();
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
-    public void testUpperBoundaryValuesDeca110MHurdlesOnPoint() {
-        Deca110MHurdles d110MH = new Deca110MHurdles();
+    public void calculateResult_RunningTimeAboveUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 29;
 
-        double distance = 28.09;
+        deca110MHurdles.calculateResult(runningTime);
 
-        d110MH.calculateResult(distance);
-
-        int actual = d110MH.getScore();
-        int expected = 1;
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca110MHurdles.getScore();
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
-    public void testUpperBoundaryValuesDeca110MHurdlesBelow() {
-        Deca110MHurdles d110MH = new Deca110MHurdles();
+    public void calculateResult_RunningTimeOnUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 28.09;
 
-        double distance = 28.08;
+        deca110MHurdles.calculateResult(runningTime);
 
-        d110MH.calculateResult(distance);
-
-        int actual = d110MH.getScore();
-        int expected = 1;
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca110MHurdles.getScore();
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
-    public void testLowerBoundaryValuesDeca110MHurdlesOnPoint() {
-        Deca110MHurdles d110MH = new Deca110MHurdles();
+    public void calculateResult_RunningTimeBelowUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 27;
 
-        double distance = 10;
+        deca110MHurdles.calculateResult(runningTime);
 
-        d110MH.calculateResult(distance);
-
-        int actual = d110MH.getScore();
-        int expected = 1556;
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca110MHurdles.getScore();
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
-    public void testLowerBoundaryValuesDeca110MHurdlesAbove() {
-        Deca110MHurdles d110MH = new Deca110MHurdles();
+    public void calculateResult_RunningTimeAboveLowerBoundary_EqualsCorrectResult() {
+        double runningTime = 11;
 
-        double distance = 10.01;
+        deca110MHurdles.calculateResult(runningTime);
 
-        d110MH.calculateResult(distance);
-
-        int actual = d110MH.getScore();
-        int expected = 1554;
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca110MHurdles.getScore();
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
     }
 
     @Test
-    public void testLowerBoundaryValuesDeca110MHurdlesBelow() {
-        Deca110MHurdles d110MH = new Deca110MHurdles();
+    public void calculateResult_RunningTimeOnLowerBoundary_EqualsCorrectResult() {
+        double runningTime = 10;
 
-        double distance = 9.99;
+        deca110MHurdles.calculateResult(runningTime);
 
-        d110MH.calculateResult(distance);
-
-        int actual = d110MH.getScore();
-        int expected = 1558;
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca110MHurdles.getScore();
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeBelowLowerBoundary_EqualsNegativeOne() {
+        double runningTime = 9;
+
+        deca110MHurdles.calculateResult(runningTime);
+
+        int expected = -1;
+        int actual = deca110MHurdles.getScore();
+
+        assertEquals(expected, actual);
     }
 }
 

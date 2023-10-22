@@ -1,115 +1,115 @@
 package testrunner;
 
+import common.CalcTrackAndField;
 import heptathlon.Hep100MHurdles;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.Assert.assertEquals;
 
 public class Hep100MHurdlesTest {
+    private final CalcTrackAndField calc = new CalcTrackAndField();
 
-    @Test
-    public void testCorrectResultsHep100MHurdles() {
-        Hep100MHurdles h100MH = new Hep100MHurdles();
-
-        double distance = 14;
-
-        h100MH.calculateResult(distance);
-
-        int actual = h100MH.getScore();
-        int expected = 978;
-
-        assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+    private int calculateExpectedScore(double runningTime) {
+        return calc.calculateTrack(9.23076, 26.7, 1.835, runningTime);
     }
 
     @Test
-    public void testUpperBoundaryValuesHep100MHurdlesAbove() {
+    public void calculateResult_ValidRunningTime_EqualsCorrectResult() {
         Hep100MHurdles h100MH = new Hep100MHurdles();
 
-        double distance = 26.41;
+        double runningTime = 18;
 
-        h100MH.calculateResult(distance);
+        h100MH.calculateResult(runningTime);
 
+        int expected = calculateExpectedScore(runningTime);
         int actual = h100MH.getScore();
-        int expected = 0;
 
-        assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void testUpperBoundaryValuesHep100MHurdlesOnPoint() {
+    public void calculateResult_RunningTimeAboveUpperBoundary_EqualsCorrectResult() {
         Hep100MHurdles h100MH = new Hep100MHurdles();
 
-        double distance = 26.4;
+        double runningTime = 27.7;
 
-        h100MH.calculateResult(distance);
+        h100MH.calculateResult(runningTime);
 
+        int expected = calculateExpectedScore(runningTime);
         int actual = h100MH.getScore();
-        int expected = 1;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
     }
 
     @Test
-    public void testUpperBoundaryValuesHep100MHurdlesBelow() {
+    public void calculateResult_RunningTimeOnUpperBoundary_EqualsCorrectResult() {
         Hep100MHurdles h100MH = new Hep100MHurdles();
 
-        double distance = 26.39;
+        double runningTime = 26.7;
 
-        h100MH.calculateResult(distance);
+        h100MH.calculateResult(runningTime);
 
+        int expected = calculateExpectedScore(runningTime);
         int actual = h100MH.getScore();
-        int expected = 1;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
     }
 
     @Test
-    public void testLowerBoundaryValuesResultsHep100MHurdlesOnPoint() {
+    public void calculateResult_RunningTimeBelowUpperBoundary_EqualsCorrectResult() {
         Hep100MHurdles h100MH = new Hep100MHurdles();
 
-        double distance = 9;
+        double runningTime = 25.7;
 
-        h100MH.calculateResult(distance);
+        h100MH.calculateResult(runningTime);
 
+        int expected = calculateExpectedScore(runningTime);
         int actual = h100MH.getScore();
-        int expected = 1799;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
     }
 
     @Test
-    public void testLowerBoundaryValuesResultsHep100MHurdlesAbove() {
+    public void calculateResult_RunningTimeAboveLowerBoundary_EqualsCorrectResult() {
         Hep100MHurdles h100MH = new Hep100MHurdles();
 
-        double distance = 9.01;
+        double runningTime = 10;
 
-        h100MH.calculateResult(distance);
+        h100MH.calculateResult(runningTime);
 
+        int expected = calculateExpectedScore(runningTime);
         int actual = h100MH.getScore();
-        int expected = 1798;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
     }
 
     @Test
-    public void testLowerBoundaryValuesHep100MHurdlesBelow() {
+    public void calculateResult_RunningTimeOnLowerBoundary_EqualsCorrectResult() {
         Hep100MHurdles h100MH = new Hep100MHurdles();
 
-        double distance = 8.99;
+        double runningTime = 9;
 
-        h100MH.calculateResult(distance);
+        h100MH.calculateResult(runningTime);
 
+        int expected = calculateExpectedScore(runningTime);
         int actual = h100MH.getScore();
-        int expected = 1799;
 
         assertEquals(expected, actual);
-        System.out.println("Expected: " +expected +" \n"+ "Actual: " +actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeBelowLowerBoundary_EqualsNegativeOne() {
+        Hep100MHurdles h100MH = new Hep100MHurdles();
+
+        double runningTime = 8;
+
+        h100MH.calculateResult(runningTime);
+
+        int expected = -1;
+        int actual = h100MH.getScore();
+
+        assertEquals(expected, actual);
     }
 }
 

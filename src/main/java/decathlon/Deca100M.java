@@ -3,40 +3,27 @@ package decathlon;
 import common.*;
 
 public class Deca100M {
+    private int score;
+    private double A = 25.4347;
+    private double B = 18;
+    private double C = 1.81;
+    CalcTrackAndField calc = new CalcTrackAndField();
 
-	private int score;
-	private double A = 25.4347;
-	private double B = 18;
-	private double C = 1.81;
-	boolean active = true;
-	CalcTrackAndField calc = new CalcTrackAndField();
-	InputResult inputResult = new InputResult();
+    // Calculate the score based on time. All running events.
+    public int calculateResult(double runningTime) {
+        if (runningTime < 5) {
+            System.out.println("Value too low");
+            score = -1;
+        } else if (runningTime >= 18) {
+            score = 0;
+        } else {
+            score = calc.calculateTrack(A, B, C, runningTime);
+        }
+        return score;
+    }
 
-	// Calculate the score based on time. All running events.
-	public void calculateResult(double runningTime) {
-		while (active) {
-			try {
-				if (runningTime < 5 ) {
-					System.out.println("Value too low");
-					runningTime = inputResult.enterResult();
-				} else if (runningTime>=18) {
-					score=0;
-					active = false;
-
-				} else {
-					score = calc.calculateTrack(A, B, C, runningTime);
-					active = false;
-				}
-			} catch (NumberFormatException e) {
-				System.out.println("Please enter a valid number");
-				runningTime = inputResult.enterResult();
-			}
-		}
-		System.out.println("The result is " + score);
-
-	}
-		public int getScore() {
-		return score;
-		}
+    public int getScore() {
+        return score;
+    }
 }
 
