@@ -35,7 +35,7 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void calculateResult_RunningTimeAboveUpperBoundary_EqualsCorrectResult() {
-        double runningTime = 29;
+        double runningTime = 29.5;
 
         deca110MHurdles.calculateResult(runningTime);
 
@@ -47,7 +47,7 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void calculateResult_RunningTimeOnUpperBoundary_EqualsCorrectResult() {
-        double runningTime = 28.09;
+        double runningTime = 28.5;
 
         deca110MHurdles.calculateResult(runningTime);
 
@@ -59,7 +59,7 @@ public class Deca110MHurdlesTest {
 
     @Test
     public void calculateResult_RunningTimeBelowUpperBoundary_EqualsCorrectResult() {
-        double runningTime = 27;
+        double runningTime = 27.5;
 
         deca110MHurdles.calculateResult(runningTime);
 

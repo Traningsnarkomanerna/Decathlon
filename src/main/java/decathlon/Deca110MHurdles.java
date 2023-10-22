@@ -15,7 +15,7 @@ public class Deca110MHurdles {
         if (runningTime < 10) {
             System.out.println("Value too low");
             score = -1;
-        } else if (runningTime >= 10 && runningTime <= 28.09) {
+        } else if (runningTime >= 10 && runningTime <= 28.5) {
             score = calc.calculateTrack(A, B, C, runningTime);
         } else {
             score = 0;
