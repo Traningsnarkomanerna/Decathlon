@@ -12,9 +12,9 @@ public class HeptHightJump {
     // Calculate the score based on distance and height. Measured in centimeters.
     public int calculateResult(double distance) {
         // Acceptable values.
-        if (distance < 76)
+        if (distance < 75)
             score = 0;
-        else if (distance >= 76 && distance <= 270) {
+        else if (distance >= 75 && distance <= 270) {
             score = calc.calculateField(A, B, C, distance);
         } else {
             System.out.println("Value too high");

@@ -75,7 +75,7 @@ public class HeptHighJumpTest {
     public void calculateResult_DistanceAboveLowerBoundary_EqualsCorrectResult() {
         HeptHightJump hHJ = new HeptHightJump();
 
-        double distance = 77;
+        double distance = 76;
 
         hHJ.calculateResult(distance);
 
@@ -89,7 +89,7 @@ public class HeptHighJumpTest {
     public void calculateResult_DistanceOnLowerBoundary_EqualsCorrectResult() {
         HeptHightJump hHJ = new HeptHightJump();
 
-        double distance = 76;
+        double distance = 75;
 
         hHJ.calculateResult(distance);
 
@@ -103,7 +103,7 @@ public class HeptHighJumpTest {
     public void calculateResult_DistanceBelowLowerBoundary_EqualsCorrectResult() {
         HeptHightJump hHJ = new HeptHightJump();
 
-        double distance = 75;
+        double distance = 74;
 
         hHJ.calculateResult(distance);
 
