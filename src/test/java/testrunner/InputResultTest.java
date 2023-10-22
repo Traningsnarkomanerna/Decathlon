@@ -1,6 +1,7 @@
 package testrunner;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
@@ -9,8 +10,7 @@ import java.io.InputStream;
 public class InputResultTest {
 
     @Test
-    void testEnterResult_ValidInput() {
-
+    void enterResult_ValidInput() {
         String validInput = "5.5";
         InputStream in = new ByteArrayInputStream(validInput.getBytes());
 
@@ -26,9 +26,8 @@ public class InputResultTest {
     }
 
     @Test
-    //to check if method handles invalid
-    void testEnterResult_InvalidInputThenValidInput() {
-
+        //to check if method handles invalid
+    void enterResult_InvalidInputThenValidInput() {
         String invalidInput = "abc\n7.2";
         InputStream in = new ByteArrayInputStream(invalidInput.getBytes());
 
@@ -44,8 +43,8 @@ public class InputResultTest {
     }
 
     @Test
-    //to check return method is working by saving 10.0
-    void testReturnResult() {
+        //to check return method is working by saving 10.0
+    void returnResult() {
         common.InputResult inputResult = new common.InputResult();
 
         inputResult.inputResult = 10.0;

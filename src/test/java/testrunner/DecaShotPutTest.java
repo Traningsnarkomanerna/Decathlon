@@ -2,10 +2,8 @@ package testrunner;
 
 import common.CalcTrackAndField;
 import decathlon.DecaShotPut;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,50 +14,97 @@ public class DecaShotPutTest {
         return calc.calculateField(51.39, 1.5, 1.05, distance);
     }
 
-    @ParameterizedTest
-    @ValueSource(doubles = {30.01, 30.0, 29.99, 1.54, 1.53, 1.52})
-    void testBoundaryValues(double distance) {
-        DecaShotPut dSP = new DecaShotPut();
-        dSP.calculateResult(distance);
+    private DecaShotPut decaShotPut;
 
-        int actual = dSP.getScore();
-        int expected = calculateExpectedScore(distance);
-
-        assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
+    @Before
+    public void setUp() {
+        decaShotPut = new decathlon.DecaShotPut();
     }
 
     @Test
-    public void testCorrectResultsDecaShotPut() {
-        DecaShotPut dSP = new DecaShotPut();
+    public void calculateResult_ValidDistance_EqualsCorrectResult() {
+        double distance = 15;
 
-        double distance = 16;
+        decaShotPut.calculateResult(distance);
 
-        dSP.calculateResult(distance);
+        int expected = calculateExpectedScore(distance);
+        int actual = decaShotPut.getScore();
 
-        int actual = dSP.getScore();
-        int expected = 851;
+        assertEquals(expected, actual);
+    }
 
-        Assertions.assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
+    @Test
+    public void calculateResult_DistanceAboveUpperBoundary_EqualsNegativeOne() {
+        double distance = 31;
+
+        decaShotPut.calculateResult(distance);
+
+        int expected = -1;
+        int actual = decaShotPut.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceOnUpperBoundary_EqualsCorrectResult() {
+        double distance = 30;
+
+        decaShotPut.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaShotPut.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceBelowUpperBoundary_EqualsCorrectResult() {
+        double distance = 29;
+
+        decaShotPut.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaShotPut.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceAboveLowerBoundary_EqualsCorrectResult() {
+        double distance = 2.5;
+
+        decaShotPut.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaShotPut.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceOnLowerBoundary_EqualsCorrectResult() {
+        double distance = 1.5;
+
+        decaShotPut.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaShotPut.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceBelowLowerBoundary_EqualsCorrectResult() {
+        double distance = 0.5;
+
+        decaShotPut.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaShotPut.getScore();
+
+        assertEquals(expected, actual);
     }
 /*
-    @Test
-    public void testUpperBoundaryValuesDecaShotPutAbove() {
-        DecaShotPut dSP = new DecaShotPut();
-
-        double distance = 30.01;
-
-        dSP.calculateResult(distance);
-
-        int actual = dSP.getScore();
-        int expected = 1732;
-
-        assertEquals(expected, actual);
-        System.out.println("Expected: " + expected + " \n" + "Actual: " + actual);
-    }
-
-
     @Test
     public void testUpperBoundaryValuesDecaShotPutOnPoint() {
         DecaShotPut dSP = new DecaShotPut();

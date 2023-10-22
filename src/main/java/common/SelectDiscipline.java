@@ -103,43 +103,73 @@ public class SelectDiscipline {
 			// Handle Decathlon disciplines
 			switch (disciplineSelected) {
 				case 1 -> {
-					deca100M.calculateResult(result);
+					while (deca100M.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + deca100M.getScore());
 					points = deca100M.getScore();
 				}
 				case 2 -> {
-					deca400M.calculateResult(result);
+					while (deca400M.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + deca400M.getScore());
 					points = deca400M.getScore();
 				}
 				case 3 -> {
-					deca110MHurdles.calculateResult(result);
+					while (deca110MHurdles.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + deca110MHurdles.getScore());
 					points = deca110MHurdles.getScore();
 				}
 				case 4 -> {
-					deca1500M.calculateResult(result);
+					while (deca1500M.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + deca1500M.getScore());
 					points = deca1500M.getScore();
 				}
 				case 5 -> {
-					decaLongJump.calculateResult(result);
+					while (decaLongJump.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + decaLongJump.getScore());
 					points = decaLongJump.getScore();
 				}
 				case 6 -> {
-					highJump.calculateResult(result);
+					while (highJump.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + highJump.getScore());
 					points = highJump.getScore();
 				}
 				case 7 -> {
-					poleVault.calculateResult(result);
+					while (poleVault.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + poleVault.getScore());
 					points = poleVault.getScore();
 				}
 				case 8 -> {
-					discusThrow.calculateResult(result);
+					while (discusThrow.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + discusThrow.getScore());
 					points = discusThrow.getScore();
 				}
 				case 9 -> {
-					decaJavelinThrow.calculateResult(result);
+					while (decaJavelinThrow.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + decaJavelinThrow.getScore());
 					points = decaJavelinThrow.getScore();
 				}
 				case 10 -> {
-					decaShotPut.calculateResult(result);
+					while (decaShotPut.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + decaShotPut.getScore());
 					points = decaShotPut.getScore();
 				}
 				default -> {
@@ -151,31 +181,52 @@ public class SelectDiscipline {
 			// Handle Heptathlon disciplines
 			switch (disciplineSelected) {
 				case 1 -> {
-					hep200M.calculateResult(result);
+					while (hep200M.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + hep200M.getScore());
 					points = hep200M.getScore();
 				}
 				case 2 -> {
-					hep800M.calculateResult(result);
+					while (hep800M.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + hep800M.getScore());
 					points = hep800M.getScore();
 				}
 				case 3 -> {
-					hep100MHurdles.calculateResult(result);
+					while (hep100MHurdles.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + hep100MHurdles.getScore());
 					points = hep100MHurdles.getScore();
 				}
 				case 4 -> {
-					hepHighJump.calculateResult(result);
+					while (hepHighJump.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + hepHighJump.getScore());
 					points = hepHighJump.getScore();
 				}
 				case 5 -> {
-					hepLongJump.calculateResult(result);
+					while (hepLongJump.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + hepLongJump.getScore());
 					points = hepLongJump.getScore();
 				}
 				case 6 -> {
-					hepShotPut.calculateResult(result);
+					while (hepShotPut.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + hepShotPut.getScore());
 					points = hepShotPut.getScore();
 				}
 				case 7 -> {
-					hepJavelinThrow.calculateResult(result);
+					while (hepJavelinThrow.calculateResult(result) == -1){
+						result = inputResult.enterResult();
+					}
+					System.out.println("The result is: " + hepJavelinThrow.getScore());
 					points = hepJavelinThrow.getScore();
 				}
 				default -> {

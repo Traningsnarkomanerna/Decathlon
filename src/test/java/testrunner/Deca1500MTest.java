@@ -1,41 +1,107 @@
 package testrunner;
 
+import common.CalcTrackAndField;
 import decathlon.Deca1500M;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class Deca1500MTest {
-   /* @Test
-    public void test1() { //to check if the result has been rounded down
-        Deca1500M test = new Deca1500M();
+    private final CalcTrackAndField calc = new CalcTrackAndField();
 
-        test.calculateResult(70);
-        //int expected =1;
-        int actual = test.getScore();   //A*(B-P) C
-        int expected = (int) Math.floor(0.03768 * Math.pow( 480-70, 1.85));
+    private int calculateExpectedScore(double runningTime) {
+        return calc.calculateTrack(0.03768, 480, 1.85, runningTime);
+    }
+
+    private Deca1500M deca1500M;
+
+    @Before
+    public void setUp() {
+        deca1500M = new decathlon.Deca1500M();
+    }
+
+    @org.junit.Test
+    public void calculateResult_ValidRunningTime_EqualsCorrectResult() {
+        double runningTime = 300.20;
+
+        deca1500M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca1500M.getScore();
+
         assertEquals(expected, actual);
     }
+
+    @org.junit.Test
+    public void calculateResult_RunningTimeAboveUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 481;
+
+        deca1500M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca1500M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.Test
+    public void calculateResult_RunningTimeOnUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 480;
+
+        deca1500M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca1500M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.Test
+    public void calculateResult_RunningTimeBelowUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 479;
+
+        deca1500M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca1500M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.Test
+    public void calculateResult_RunningTimeAboveLowerBoundary_EqualsCorrectResult() {
+        double runningTime = 151;
+
+        deca1500M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca1500M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.Test
+    public void calculateResult_RunningTimeOnLowerBoundary_EqualsCorrectResult() {
+        double runningTime = 150;
+
+        deca1500M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca1500M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
     @Test
-    public void test2() { //to check a typical number, when B=P, the result should be 0 according to the formula
-        Deca1500M test = new Deca1500M();
+    public void calculateResult_RunningTimeBelowLowerBoundary_EqualsNegativeOne() {
+        double runningTime = 149;
 
-        test.calculateResult(480);
-        int expected =0;
-        int actual = test.getScore();
+        deca1500M.calculateResult(runningTime);
+
+        int expected = -1;
+        int actual = deca1500M.getScore();
+
         assertEquals(expected, actual);
     }
-
-    @Test
-    public void test3() { // put in a random valid number to check if the calculator works properly
-        Deca1500M test = new Deca1500M();
-
-        test.calculateResult(60);
-        int expected =2686;
-        int actual = test.getScore();
-        assertEquals(expected, actual);
-    }
-*/
-//All test cases failed as the developer has set two acceptable values in the program which is not included in the requirement
-
 }

@@ -9,7 +9,7 @@ import java.io.InputStream;
 public class InputNameTest {
 
     @Test
-    public void testInputName() {
+    public void inputName_ValidInput() {
         String inputName = "Umar";
         InputStream inputStream = new ByteArrayInputStream(inputName.getBytes());
         System.setIn(inputStream);

@@ -1,51 +1,107 @@
 package testrunner;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import common.CalcTrackAndField;
+import decathlon.DecaDiscusThrow;
+import org.junit.Before;
+import org.junit.Test;
 
-public class DecaDiscusThrowTest extends TestCase {
-    @Test
-    //Testing if it's showing rounded score after using a distance with 43.75
+import static org.junit.Assert.assertEquals;
 
-    public void testDecaDiscusThrow_RoundedScore() {
-        var decaDiscusThrow = new decathlon.DecaDiscusThrow();
-        double A = 12.91;
-        double B = 4;
-        double C = 1.1;
+public class DecaDiscusThrowTest {
+    private final CalcTrackAndField calc = new CalcTrackAndField();
 
-        double distance = 43.75;
-        int expectedScore = (int) (A * Math.pow(distance - B, C));
-        int actualScore = decaDiscusThrow.calculateResult(distance);
+    private int calculateExpectedScore(double distance) {
+        return calc.calculateField(12.91, 4, 1.1, distance);
+    }
 
-        assertEquals(expectedScore, actualScore);
+    private DecaDiscusThrow decaDiscusThrow;
+
+    @Before
+    public void setUp() {
+        decaDiscusThrow = new decathlon.DecaDiscusThrow();
     }
 
     @Test
-    public void testDecaDiscusThrow_HighScore() {
-        var decaDiscusThrow = new decathlon.DecaDiscusThrow();
-        double A = 12.91;
-        double B = 4;
-        double C = 1.1;
+    public void calculateResult_ValidDistance_EqualsCorrectResult() {
+        double distance = 36;
 
-        double distance = 70.0;
-        int expectedScore = (int) (A * Math.pow(distance - B, C));
-        int actualScore = decaDiscusThrow.calculateResult(distance);
+        decaDiscusThrow.calculateResult(distance);
 
-        assertEquals(expectedScore, actualScore);
+        int expected = calculateExpectedScore(distance);
+        int actual = decaDiscusThrow.getScore();
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testDecaDiscusThrow_LowScore() {
-        var decaDiscusThrow = new decathlon.DecaDiscusThrow();
-        double A = 12.91;
-        double B = 4;
-        double C = 1.1;
+    public void calculateResult_DistanceAboveUpperBoundary_EqualsNegativeOne() {
+        double distance = 86;
 
-        double distance = 20.0;
-        int expectedScore = (int) (A * Math.pow(distance - B, C));
-        int actualScore = decaDiscusThrow.calculateResult(distance);
+        decaDiscusThrow.calculateResult(distance);
 
-        assertEquals(expectedScore, actualScore);
+        int expected = -1;
+        int actual = decaDiscusThrow.getScore();
+
+        assertEquals(expected, actual);
     }
 
+    @Test
+    public void calculateResult_DistanceOnUpperBoundary_EqualsCorrectResult() {
+        double distance = 85;
+
+        decaDiscusThrow.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaDiscusThrow.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceBelowUpperBoundary_EqualsCorrectResult() {
+        double distance = 84;
+
+        decaDiscusThrow.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaDiscusThrow.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceAboveLowerBoundary_EqualsCorrectResult() {
+        double distance = 5;
+
+        decaDiscusThrow.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaDiscusThrow.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceOnLowerBoundary_EqualsCorrectResult() {
+        double distance = 4;
+
+        decaDiscusThrow.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaDiscusThrow.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceBelowLowerBoundary_EqualsCorrectResult() {
+        double distance = 3;
+
+        decaDiscusThrow.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaDiscusThrow.getScore();
+
+        assertEquals(expected, actual);
+    }
 }

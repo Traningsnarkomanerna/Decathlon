@@ -1,82 +1,107 @@
 package testrunner;
+
 import static org.junit.Assert.*;
 
+import common.CalcTrackAndField;
+import decathlon.Deca100M;
 import org.junit.Before;
 import org.junit.Test;
 
 public class Deca100MTest {
-private decathlon.Deca100M deca100M;
+    private final CalcTrackAndField calc = new CalcTrackAndField();
 
-@Before
-public void setUp(){
-    deca100M = new decathlon.Deca100M();
-}
+    private int calculateExpectedScore(double runningTime) {
+        return calc.calculateTrack(25.4347, 18, 1.81, runningTime);
+    }
 
-    //Testing if the entered result is giving correct point score
+    private Deca100M deca100M;
+
+    @Before
+    public void setUp() {
+        deca100M = new decathlon.Deca100M();
+    }
+
     @Test
-    public void testRunningTimeToGettScoreInRange(){
-        //decathlon.Deca100M deca100m = new decathlon.Deca100M();
-        double A = 25.4347;
-        double B = 18;
-        double C = 1.81;
+    public void calculateResult_ValidRunningTime_EqualsCorrectResult() {
+        double runningTime = 10;
 
-        double runningTime = 10.0;
-        int expectedScore = (int) (A * Math.pow((B - runningTime), C));
         deca100M.calculateResult(runningTime);
 
-        int actualScore = deca100M.getScore();
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca100M.getScore();
 
-        assertEquals(expectedScore, actualScore);
-        System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
+        assertEquals(expected, actual);
     }
-    @Test
-    public void testRunningTimeOfLowestCorrectValue(){
 
+    @Test
+    public void calculateResult_RunningTimeAboveUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 19;
+
+        deca100M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca100M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeOnUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 18;
+
+        deca100M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca100M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeBelowUpperBoundary_EqualsCorrectResult() {
+        double runningTime = 17;
+
+        deca100M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca100M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeAboveLowerBoundary_EqualsCorrectResult() {
+        double runningTime = 6;
+
+        deca100M.calculateResult(runningTime);
+
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca100M.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_RunningTimeOnLowerBoundary_EqualsCorrectResult() {
         double runningTime = 5;
-        int expectedScore = 2640;
 
         deca100M.calculateResult(runningTime);
 
-        int actualScore = deca100M.getScore();
-        assertEquals(expectedScore,actualScore);
-        System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
+        int expected = calculateExpectedScore(runningTime);
+        int actual = deca100M.getScore();
+
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void testRunningTimeOfLowestValueOutOfRange() {
-        // Test with a running time below the acceptable range
-        double runningTime = 4.99;
-        int expectedScore = 0;
-
-        int actualScore = deca100M.getScore();
-
-        assertEquals(expectedScore,actualScore);
-        System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
-
-    }
-    @Test
-    public void testRunningTimeOfHighCorrectValue(){
-
-        double runningTime = 17.83;
-        int expectedScore = 1;
+    public void calculateResult_RunningTimeBelowLowerBoundary_EqualsNegativeOne() {
+        double runningTime = 4;
 
         deca100M.calculateResult(runningTime);
 
-        int actualScore = deca100M.getScore();
-        assertEquals(expectedScore,actualScore);
-        System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
+        int expected = -1;
+        int actual = deca100M.getScore();
+
+        assertEquals(expected, actual);
     }
-    /*@Test
-    public void testRunningTimeOfHighValueOutOfRange(){
-
-        double runningTime = 17.84;
-        int expectedScore = 0;
-
-        deca100M.calculateResult(runningTime);
-
-        int actualScore = deca100M.getScore();
-        assertEquals(expectedScore,actualScore);
-        System.out.println("Expected: " + expectedScore + " \n" + "Actual: " + actualScore);
-
-    }*/
-
 }

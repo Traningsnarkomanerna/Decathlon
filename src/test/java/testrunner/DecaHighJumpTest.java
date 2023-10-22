@@ -1,51 +1,107 @@
 package testrunner;
 
-import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 
-public class DecaHighJumpTest extends TestCase {
-    @Test
-    //Testing if it's showing rounded score after using a distance with 43.75
+import common.CalcTrackAndField;
+import decathlon.DecaHighJump;
+import org.junit.Before;
+import org.junit.Test;
 
-    public void testDecaHighJump_RoundedScore() {
-        var decaHighJump = new decathlon.DecaHighJump();
-        double A = 0.8465;
-        double B = 75;
-        double C = 1.42;
+public class DecaHighJumpTest {
+    private final CalcTrackAndField calc = new CalcTrackAndField();
 
-        double distance = 150.75;
-        int expectedScore = (int) (A * Math.pow(distance - B, C));
-        int actualScore = decaHighJump.calculateResult(distance);
+    private int calculateExpectedScore(double distance) {
+        return calc.calculateField(0.8465, 75, 1.42, distance);
+    }
 
-        assertEquals(expectedScore, actualScore);
+    private DecaHighJump decaHighJump;
+
+    @Before
+    public void setUp() {
+        decaHighJump = new decathlon.DecaHighJump();
     }
 
     @Test
-    public void testDecaHighJump_HighScore() {
-        var decaHighJump = new decathlon.DecaHighJump();
-        double A = 0.8465;
-        double B = 75;
-        double C = 1.42;
+    public void calculateResult_ValidDistance_EqualsCorrectResult() {
+        double distance = 200;
 
-        double distance = 290.0;
-        int expectedScore = (int) (A * Math.pow(distance - B, C));
-        int actualScore = decaHighJump.calculateResult(distance);
-        assertEquals(expectedScore, actualScore);
+        decaHighJump.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaHighJump.getScore();
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testDecaHighJump_LowScore() {
-        var decaHighJump = new decathlon.DecaHighJump();
-        double A = 0.8465;
-        double B = 75;
-        double C = 1.42;
+    public void calculateResult_DistanceAboveUpperBoundary_EqualsNegativeOne() {
+        double distance = 301;
 
-        double distance = 80.0;
-        int expectedScore = (int) (A * Math.pow(distance - B, C));
-        int actualScore = decaHighJump.calculateResult(distance);
+        decaHighJump.calculateResult(distance);
 
-        assertEquals(expectedScore, actualScore);
+        int expected = -1;
+        int actual = decaHighJump.getScore();
+
+        assertEquals(expected, actual);
     }
 
+    @Test
+    public void calculateResult_DistanceOnUpperBoundary_EqualsCorrectResult() {
+        double distance = 300;
 
+        decaHighJump.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaHighJump.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceBelowUpperBoundary_EqualsCorrectResult() {
+        double distance = 299;
+
+        decaHighJump.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaHighJump.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceAboveLowerBoundary_EqualsCorrectResult() {
+        double distance = 76;
+
+        decaHighJump.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaHighJump.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceOnLowerBoundary_EqualsCorrectResult() {
+        double distance = 75;
+
+        decaHighJump.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaHighJump.getScore();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void calculateResult_DistanceBelowLowerBoundary_EqualsCorrectResult() {
+        double distance = 74;
+
+        decaHighJump.calculateResult(distance);
+
+        int expected = calculateExpectedScore(distance);
+        int actual = decaHighJump.getScore();
+
+        assertEquals(expected, actual);
+    }
 }

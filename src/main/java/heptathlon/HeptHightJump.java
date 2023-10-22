@@ -1,60 +1,53 @@
 package heptathlon;
 
 import common.CalcTrackAndField;
-import common.InputResult;
 
 public class HeptHightJump {
+    private int score;
+    private double A = 1.84523;
+    private double B = 75;
+    private double C = 1.348;
+    CalcTrackAndField calc = new CalcTrackAndField();
 
-	private int score;
-	private double A = 1.84523;
-	private double B = 75;
-	private double C = 1.348;
-	boolean active = true;
-	CalcTrackAndField calc = new CalcTrackAndField();
-	InputResult inputResult = new InputResult();
+    // Calculate the score based on distance and height. Measured in centimeters.
+    public int calculateResult(double distance) {
+        // Acceptable values.
+        if (distance < 75)
+            score = 0;
+        else if (distance >= 75 && distance <= 270) {
+            score = calc.calculateField(A, B, C, distance);
+        } else {
+            System.out.println("Value too high");
+            score = -1;
+        }
+        return score;
+    }
 
-	// Calculate the score based on distance and height. Measured in centimeters.
-	public void calculateResult(double distance) {
+    /*while (active) {
 
-		try {
-			// Acceptable values.
-			if (distance < 76)
-				score = 0;
-			else if (distance >= 76 && distance <= 270) {
-				score = calc.calculateField(A, B, C, distance);
-			} else {
-				score = 2269;
-			}
-		} catch (Exception e) {
+        try {
+            // Acceptable values in cm
+            if (distance < 76) {
+                System.out.println("Value too low");
+                distance = inputResult.enterResult();
+            } else if (distance > 270) {
 
-			System.out.println("The result is: " + score);
-		}
-	}
-		/*while (active) {
+                System.out.println("Value too high");
+                distance = inputResult.enterResult();
 
-			try {
-				// Acceptable values in cm
-				if (distance < 76) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
-				} else if (distance > 270) {
+            } else {
 
-					System.out.println("Value too high");
-					distance = inputResult.enterResult();
+                score = calc.calculateField(A, B, C, distance);
+                active = false;
+            }
+        } catch (Exception e) {
 
-				} else {
-
-					score = calc.calculateField(A, B, C, distance);
-					active = false;
-				}
-			} catch (Exception e) {
-
-				System.out.println("Please enter numbers");
-			}
-		}
-		System.out.println("The result is: " + score);
-	}*/
-	public int getScore() {
-		return score;
-	}
+            System.out.println("Please enter numbers");
+        }
+    }
+    System.out.println("The result is: " + score);
+}*/
+    public int getScore() {
+        return score;
+    }
 }
