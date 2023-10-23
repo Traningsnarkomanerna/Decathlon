@@ -13,7 +13,7 @@ public class Hep200M {
     public int calculateResult(double runningTime) {
         // Acceptable values.
         if (runningTime < 14) {
-            System.out.println("Value too high");
+            System.out.println("Value too low");
             score = -1; // Score you can get if lower than 14 in this case, specifically 13.9
         } else if (runningTime >= 14 && runningTime <= 42.5) {
             score = calc.calculateTrack(A, B, C, runningTime);
