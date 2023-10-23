@@ -252,7 +252,7 @@ public class SelectDiscipline {
 		System.out.println("1.\tDecathlon 100 meters.\t\t\t(Measured in seconds)");
 		System.out.println("2.\tDecathlon 400 meters.\t\t\t(Measured in seconds)");
 		System.out.println("3.\tDecathlon 110 meters hurdles.\t(Measured in seconds)");
-		System.out.println("4.\tDecathlon 1500 meters.\t\t\t(Measured in minutes and seconds)");
+		System.out.println("4.\tDecathlon 1500 meters.\t\t\t(Measured in seconds)");
 		System.out.println("5.\tDecathlon Long Jump.\t\t\t(Measured in centimeters)");
 		System.out.println("6.\tDecathlon High Jump.\t\t\t(Measured in centimeters)");
 		System.out.println("7.\tDecathlon Pole Vault.\t\t\t(Measured in centimeters)");
